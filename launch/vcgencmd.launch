@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="vcgencmd" name="vcgencmd" type="vcgencmd.py"/>
+  <node pkg="tf" type="static_transform_publisher" name="base_frame_2_temp_frame" args="0 0 0 0 0 0 /base_frame /temp_frame 1000"/> 
+</launch>
