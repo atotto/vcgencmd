@@ -1,6 +1,6 @@
 # VCGenCmd
 
-This repository uses [vcgencmd](https://elinux.org/RPI_vcgencmd_usage) to add a ROS 2 node monitoring Raspberry Pi hardware. 
+This repository uses [vcgencmd](https://elinux.org/RPI_vcgencmd_usage) to add a ROS 2 node monitoring Raspberry Pi hardware.
 
 ## Supported Features
 
@@ -22,7 +22,7 @@ ros2 launch vcgencmd vcgen_monitor_launch.py
 Verify output
 
 ```commandline
-$ ros2 topic echo /pi_temperature 
+$ ros2 topic echo /pi_temperature
 header:
   stamp:
     sec: 1682182482

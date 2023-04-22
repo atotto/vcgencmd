@@ -32,13 +32,6 @@ class ThrottleBits:
         ]
 
 
-def make_even_hexstr(hex_str):
-    lhs, rhs = re.split(r"x|X", hex_str)
-    if bool(len(rhs) % 2):
-        return "".join(["0", rhs])
-    return rhs
-
-
 def get_serialno():
     cpuserial = ""
     with open("/proc/cpuinfo", "r") as f:
@@ -88,9 +81,7 @@ class VcgencmdMonitor(Node):
         output = subprocess.check_output(["vcgencmd", "get_throttled"]).decode("utf-8")
         tout = output.split("=")[1].strip()
 
-        throttle_state = int.from_bytes(
-            binascii.unhexlify(make_even_hexstr(tout.strip())), byteorder="little"
-        )
+        throttle_state = int(output.split("=")[1], base=16)
 
         for flag in self.throttle_bits.flags:
             flag_active = (throttle_state >> flag.offset) & 1
